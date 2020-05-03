@@ -1,6 +1,11 @@
 <template>
   <div class="city__window">
-      {{ this.cityName }}
+      <div class="city__window-name">
+          {{this.cityName}}
+      </div>
+      <button class="city__window-cta">
+          See Forecast
+      </button>
   </div>
 </template>
 
