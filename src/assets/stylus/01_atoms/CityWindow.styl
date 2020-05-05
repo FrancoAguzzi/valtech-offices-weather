@@ -1,16 +1,51 @@
 .city__window
+    position: absolute
+    left: -119px
     width: 250px
     height: 150px
-    background-color: lightgray 
-    border-radius: 10px
+    box-sizing: border-box
+    font-family: primaryFont
+
+    background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
+    border-radius: 4px
+    border: 1px solid tertiaryColor
+    box-shadow: 0px 3px 6px secondaryColor;
+
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
+    z-index: 1
+
+    &::before
+        content: ''
+        position: absolute
+        box-sizing: border-box
+        top: -11px
+        z-index: 1
+        width: 20px
+        height: 20px
+        border-top: 1px solid tertiaryColor
+        border-left: 1px solid tertiaryColor
+        background-color: linearGradient1
+        transform: rotateZ(45deg)
 
     &-name
         margin-bottom: 15px
         font-size: 24px
 
     &-cta
-        padding: 10px 20px 
+        padding: 10px 20px
+        font-family: primaryFont
+
+        background-color: primaryColor
+        border-radius: 4px
+        border: 1px solid secondaryColor
+
+        cursor: pointer
+        outline: none
+        transition: all .4s
+
+        &:hover
+            background-color: linearGradient3
+            transition: all .4s

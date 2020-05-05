@@ -3,7 +3,7 @@
       <div class="city__window-name">
           {{this.cityName}}
       </div>
-      <button class="city__window-cta">
+      <button class="city__window-cta" @click="openSlider">
           See Forecast
       </button>
   </div>
@@ -18,5 +18,10 @@ export default {
             required: true,
         }
     },
+    methods: {
+        openSlider() {
+            document.getElementsByClassName('card-slider')[0].classList.add('opened');
+        }
+    }
 };
 </script>
