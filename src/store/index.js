@@ -17,7 +17,7 @@ export default new Vuex.Store({
     },
     getTemperature(state) {
       // return state.apiData.list[0].main.temp;
-      return state.apiData.main.temp;
+      return state.apiData.main;
     },
     getFeelsLike(state) {
       // return state.apiData.list[0].main.feels_like;
