@@ -1,9 +1,9 @@
 <template>
   <div class="city__window">
       <div class="city__window-name">
-          {{this.cityName}}
+          {{this.cityName}}, {{this.countryName}}
       </div>
-      <button class="city__window-cta" @click="openSlider">
+      <button class="city__window-cta" @click="openCardSlider">
           See Forecast
       </button>
   </div>
@@ -16,11 +16,15 @@ export default {
         cityName: {
             type: String,
             required: true,
-        }
+        },
+        countryName: {
+            type: String,
+            required: true,
+        },
     },
     methods: {
-        openSlider() {
-            document.getElementsByClassName('card-slider')[0].classList.add('opened');
+        openCardSlider() {
+            this.$store.commit('changeShowSlider', true)
         }
     }
 };

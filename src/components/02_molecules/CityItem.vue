@@ -1,7 +1,7 @@
 <template>
   <div class="city">
       <city-dot :cityName="cityName" @shouldToggle="toggleCitySelected"></city-dot>
-      <city-window v-if="this.isEnabled" :cityName="cityName"></city-window>
+      <city-window v-if="this.isEnabled" :cityName="cityName" :countryName="countryName"></city-window>
   </div>
 </template>
 
@@ -20,21 +20,26 @@ export default {
             isEnabled: false,
         };
     },
-    computed: {
-        getCitySelected() {
-            return this.$store.getters.getCitySelected;
-        }
-    },
     props: {
         cityName: {
             type: String,
             required: true,
         },
+        countryName: {
+            type: String,
+            required: true,
+        },
+    },
+    computed: {
+        getCitySelected() {
+            return this.$store.getters.getCitySelected;
+        }
     },
     methods: {
         toggleCitySelected() {
             this.isEnabled = !this.isEnabled
             this.$store.commit('changeCitySelected', this.cityName);
+            this.$store.commit('changeCountrySelected', this.countryName);
         },
     },
 };

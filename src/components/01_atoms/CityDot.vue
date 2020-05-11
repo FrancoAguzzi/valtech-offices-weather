@@ -13,6 +13,7 @@ export default {
     },
     methods: {
       dotClicked() {
+        this.$store.commit('changeShowSlider', false)
         this.$emit('shouldToggle');
       },
     },

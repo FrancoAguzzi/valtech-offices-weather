@@ -7,12 +7,14 @@
     right: -650px
     background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
     transition: all .4s
+    border-left: 1px solid secondaryColor
 
     &.opened
         right: 0
         transition: all .4s
 
     &__closer
+        height: 3%
         border: none
         padding: 0
         background: transparent
@@ -27,21 +29,23 @@
 
     &__forecast
         width: 100%
-        height: 100vh
+        height: 97%
         display: flex
         flex-direction: column
         align-items: center
 
         &-items
-            height: 65%
+            height: 40%
             display: flex
             flex-direction: column
             align-items: center
 
         &-city
+            box-sizing: border-box
             font-family: primaryFont
             font-size: 70px
-            margin: 15% 0 30% 0
+            height: 25%
+            padding-top: 5%
 
         &-icon
             width: 70px
@@ -72,7 +76,7 @@
             font-size: 24px
             color: tertiaryColor
             font-weight: bold
-            margin-bottom: 20px
+            height: 5%
 
             &max
                 margin-left: 5px
@@ -82,7 +86,7 @@
 
         &-info
             width: 100%
-            height: 25%
+            height: 30%
             background-color: primaryColor
             border-top: 1px solid secondaryColor
             box-shadow: 0 -10px 100px primaryColor
