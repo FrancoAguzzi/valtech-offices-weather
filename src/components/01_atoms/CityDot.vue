@@ -13,7 +13,8 @@ export default {
     },
     methods: {
       dotClicked() {
-        this.$store.commit('changeShowSlider', false)
+        // close forecast slider and emit event to open city window
+        this.$store.commit('changeShowSlider', false);
         this.$emit('shouldToggle');
       },
     },

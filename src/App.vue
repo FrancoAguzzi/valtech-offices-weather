@@ -21,6 +21,6 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@import './assets/stylus/main.styl'
+<style src="./assets/stylus/main.styl" lang="stylus">
+
 </style>

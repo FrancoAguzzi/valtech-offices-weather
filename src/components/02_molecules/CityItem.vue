@@ -1,6 +1,6 @@
 <template>
   <div class="city">
-      <city-dot :cityName="cityName" @shouldToggle="toggleCitySelected"></city-dot>
+      <city-dot :cityName="cityName" @shouldToggle="toggleCityWindow"></city-dot>
       <city-window v-if="this.isEnabled" :cityName="cityName" :countryName="countryName"></city-window>
   </div>
 </template>
@@ -8,6 +8,7 @@
 <script>
 import CityDot from '../01_atoms/CityDot';
 import CityWindow from '../01_atoms/CityWindow';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'City',
@@ -31,15 +32,13 @@ export default {
         },
     },
     computed: {
-        getCitySelected() {
-            return this.$store.getters.getCitySelected;
-        }
+        ...mapGetters([
+            'getCitySelected',
+        ])
     },
     methods: {
-        toggleCitySelected() {
+        toggleCityWindow() {
             this.isEnabled = !this.isEnabled
-            this.$store.commit('changeCitySelected', this.cityName);
-            this.$store.commit('changeCountrySelected', this.countryName);
         },
     },
 };

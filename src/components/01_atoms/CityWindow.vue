@@ -3,7 +3,7 @@
       <div class="city__window-name">
           {{this.cityName}}, {{this.countryName}}
       </div>
-      <button class="city__window-cta" @click="openCardSlider">
+      <button class="city__window-cta" @click="openCityForecast">
           See Forecast
       </button>
   </div>
@@ -23,8 +23,11 @@ export default {
         },
     },
     methods: {
-        openCardSlider() {
-            this.$store.commit('changeShowSlider', true)
+        openCityForecast() {
+            this.$store.commit('changeCitySelected', this.cityName);
+            this.$store.commit('changeCountrySelected', this.countryName);
+            this.$store.dispatch('requestApiData');
+            this.$store.commit('changeShowSlider', true);
         }
     }
 };

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Axios from 'axios';
+import axios from 'axios';
 
 Vue.use(Vuex)
 
@@ -65,10 +65,9 @@ export default new Vuex.Store({
   },
   actions: {
     requestApiData({ state, commit }) {
-      Axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${state.citySelected}&appid=${state.apiKey}`)
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${state.citySelected}&appid=${state.apiKey}`)
            .then(response => {
              commit('changeApiData', response.data.list[0]);
-             console.log(response.data.list[0])
            })
            .catch(error => {
              alert(`Error: ${error}`)
