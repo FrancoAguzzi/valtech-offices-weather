@@ -8,7 +8,6 @@
 <script>
 import CityDot from '../01_atoms/CityDot';
 import CityWindow from '../01_atoms/CityWindow';
-import { mapGetters } from 'vuex';
 
 export default {
     name: 'City',
@@ -30,11 +29,6 @@ export default {
             type: String,
             required: true,
         },
-    },
-    computed: {
-        ...mapGetters([
-            'getCitySelected',
-        ])
     },
     methods: {
         toggleCityWindow() {

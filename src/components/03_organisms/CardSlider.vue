@@ -1,24 +1,26 @@
 <template>
-  <div class="card-slider" id="slider" :class="{ opened: this.$store.getters.getShowSlider }">
-        <button class="card-slider__closer" @click="closeCardSlider">
+  <div class="card-slider" id="slider" :class="{ opened: this.getShowSlider }">
+      <div class="card-slider__header">
+        <button class="card-slider__header-close" @click="closeCardSlider">
             <svg viewBox="0 0 100 100" class="close-svg">
                 <line x1="0" y1="0" x2="100" y2="100"></line>
                 <line x1="0" y1="100" x2="100" y2="0"></line>
             </svg>
         </button>
+      </div>
       <div class="card-slider__forecast">
         <div class="card-slider__forecast-city">{{ this.getCitySelected }}, {{ this.getCountrySelected }}</div>
         <div class="card-slider__forecast-items">
             <div class="card-slider__forecast-icon">
-                <img :src="this.sanitizeWeatherIcon" alt="Weather Icon">
+                <img :src="'../../assets/images/' + this.getWeatherIcon + '.png'" alt="Weather Icon">
             </div>
-            <div class="card-slider__forecast-temperature">{{ this.getTemperature.temp }}K</div>
-            <div class="card-slider__forecast-feelslike"><span>feels</span> like {{ this.getFeelsLike }}K</div>
+            <div class="card-slider__forecast-temperature">{{ this.getTemperature }}{{ this.temperatureMetric }}</div>
+            <div class="card-slider__forecast-feelslike"><span>feels</span> like {{ this.getFeelsLike }}{{ this.temperatureMetric }}</div>
         </div>
         <div class="card-slider__forecast-temps">
-            <div class="card-slider__forecast-tempsmin">{{ this.getMinTemp }}K</div>
+            <div class="card-slider__forecast-tempsmin">{{ this.getMinTemp }}{{ this.temperatureMetric }}</div>
             <span>-</span>
-            <div class="card-slider__forecast-tempsmax">{{ this.getMaxTemp }}K</div>
+            <div class="card-slider__forecast-tempsmax">{{ this.getMaxTemp }}{{ this.temperatureMetric }}</div>
         </div>
         <div class="card-slider__forecast-info">
             <div class="card-slider__forecast-humidity">
@@ -26,12 +28,12 @@
                 <span>humidity</span>
             </div>
             <div class="card-slider__forecast-windspeed">
-                <div>{{ this.sanitizeWindSpeed }} <span>km/h</span></div>
+                <div>{{ this.getWindSpeed }} <span>km/h</span></div>
                 <span>wind speed</span>
             </div>
             <div class="card-slider__forecast-weather">
-                {{ this.sanitizeWeatherDescFirst }}
-                <div>{{ this.sanitizeWeatherDescSecond }}</div>
+                {{ this.getWeatherDescFirst }}
+                <div>{{ this.getWeatherDescSecond }}</div>
             </div>
         </div>
       </div>
@@ -39,40 +41,42 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'CardSlider',
+    data() {
+        return {
+            temperatureMetric: 'K'
+        }
+    },
     computed: {
         ...mapGetters([
             'getCitySelected',
             'getCountrySelected',
             'getTemperature',
-            'getFeelsLike',
             'getMinTemp',
             'getMaxTemp',
-            'getHumidity',
+            'getFeelsLike',
+            'getShowSlider',
             'getWindSpeed',
-            'getWeatherDescription',
-            'getWeatherIcon'
+            'getHumidity',
+            'getWeatherDescFirst',
+            'getWeatherDescSecond',
+            'getWeather',
+            'getWeatherIcon',
         ]),
-        sanitizeWeatherIcon() {
-            return `/src/assets/images/${this.getWeatherIcon}.png`
-        },
-        sanitizeWindSpeed() {
-            return Math.round((this.getWindSpeed * 3.6) * 100) / 100
-        },
-        sanitizeWeatherDescFirst() {
-            return this.getWeatherDescription.split(' ')[0]
-        },
-        sanitizeWeatherDescSecond() {
-          return this.getWeatherDescription.split(' ')[1]
+        sanitizeWeatherIconPath() {
+            return `../../assets/images/${this.getWeatherIcon}.png`;
         }
     },
     methods: {
+        ...mapMutations([
+            'changeShowSlider',
+        ]),
         closeCardSlider() {
-            this.$store.commit('changeShowSlider', false)
-        }
+            this.changeShowSlider(false);
+        },
     }
 }
 </script>

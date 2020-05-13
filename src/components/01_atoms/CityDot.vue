@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
     name: 'CityDot',
     props: {
@@ -11,10 +13,15 @@ export default {
         required: true,
       }
     },
+    computed: {
+      ...mapGetters([
+        'getShowSlider',
+      ])
+    },
     methods: {
       dotClicked() {
         // close forecast slider and emit event to open city window
-        this.$store.commit('changeShowSlider', false);
+        if (this.getShowSlider) this.$store.commit('changeShowSlider', false);
         this.$emit('shouldToggle');
       },
     },

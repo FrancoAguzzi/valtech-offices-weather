@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { mapMutations, mapActions } from 'vuex';
+
 export default {
     name: 'CityWindow',
     props: {
@@ -23,11 +25,24 @@ export default {
         },
     },
     methods: {
-        openCityForecast() {
-            this.$store.commit('changeCitySelected', this.cityName);
-            this.$store.commit('changeCountrySelected', this.countryName);
-            this.$store.dispatch('requestApiData');
-            this.$store.commit('changeShowSlider', true);
+        ...mapActions([
+            'requestApiData',
+        ]),
+        ...mapMutations([
+            'changeCitySelected',
+            'changeCountrySelected',
+            'changeShowSlider',
+        ]),
+        async openCityForecast() {
+            // sends city selected to store state
+            this.changeCitySelected(this.cityName);
+            this.changeCountrySelected(this.countryName);
+
+            // requests new api data based on new city selected
+            this.requestApiData();
+
+            // opens forecast slider
+            this.changeShowSlider(true);
         }
     }
 };
