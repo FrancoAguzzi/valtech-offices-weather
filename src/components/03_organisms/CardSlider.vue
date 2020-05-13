@@ -7,20 +7,25 @@
                 <line x1="0" y1="100" x2="100" y2="0"></line>
             </svg>
         </button>
+        <input type="checkbox" name="changeMetric" class="card-slider__header-metric">
+        <label for="changeMetric" class="card-slider__header-metric-label" @click="changeTemperatureMetric">
+            <span class="card-slider__header-metric-kelvin">K</span>
+            <span class="card-slider__header-metric-celsius">°C</span>
+        </label>
       </div>
       <div class="card-slider__forecast">
         <div class="card-slider__forecast-city">{{ this.getCitySelected }}, {{ this.getCountrySelected }}</div>
         <div class="card-slider__forecast-items">
             <div class="card-slider__forecast-icon">
-                <img :src="'../../assets/images/' + this.getWeatherIcon + '.png'" alt="Weather Icon">
+                <img :src="'/' + this.getWeatherIcon" alt="Weather Icon">
             </div>
-            <div class="card-slider__forecast-temperature">{{ this.getTemperature }}{{ this.temperatureMetric }}</div>
-            <div class="card-slider__forecast-feelslike"><span>feels</span> like {{ this.getFeelsLike }}{{ this.temperatureMetric }}</div>
+            <div class="card-slider__forecast-temperature">{{ this.getTemperatureCalculation(this.getTemperature) }}{{ this.temperatureMetric }}</div>
+            <div class="card-slider__forecast-feelslike"><span>feels</span> like {{ this.getTemperatureCalculation(this.getFeelsLike) }}{{ this.temperatureMetric }}</div>
         </div>
         <div class="card-slider__forecast-temps">
-            <div class="card-slider__forecast-tempsmin">{{ this.getMinTemp }}{{ this.temperatureMetric }}</div>
+            <div class="card-slider__forecast-tempsmin">{{ this.getTemperatureCalculation(this.getMinTemp) }}{{ this.temperatureMetric }}</div>
             <span>-</span>
-            <div class="card-slider__forecast-tempsmax">{{ this.getMaxTemp }}{{ this.temperatureMetric }}</div>
+            <div class="card-slider__forecast-tempsmax">{{ this.getTemperatureCalculation(this.getMaxTemp) }}{{ this.temperatureMetric }}</div>
         </div>
         <div class="card-slider__forecast-info">
             <div class="card-slider__forecast-humidity">
@@ -66,9 +71,6 @@ export default {
             'getWeather',
             'getWeatherIcon',
         ]),
-        sanitizeWeatherIconPath() {
-            return `../../assets/images/${this.getWeatherIcon}.png`;
-        }
     },
     methods: {
         ...mapMutations([
@@ -77,6 +79,15 @@ export default {
         closeCardSlider() {
             this.changeShowSlider(false);
         },
+        changeTemperatureMetric() {
+            this.temperatureMetric === 'K' ? this.temperatureMetric = '°C' : this.temperatureMetric = 'K';
+        },
+        getTemperatureCalculation(number) {
+            if (this.temperatureMetric !== 'K') {
+                return Math.round((number - 273.15) * 10) / 10;
+            }
+            return number
+        }
     }
 }
 </script>

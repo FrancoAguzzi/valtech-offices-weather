@@ -32,6 +32,36 @@
                 transition: transform .4s
                 cursor: pointer
 
+        &-metric
+            display: none;
+            font-family: primaryFont
+            font-weight: bold
+
+            &-kelvin,
+            &-celsius
+                z-index: 1
+
+            &-label
+                position: relative
+                width: 50px
+                height: 25px
+                border-radius: 8px
+                background-color: primaryColor 
+                display: flex
+                justify-content: space-around
+                align-items: center
+
+                &:before
+                    content: ''
+                    position: absolute
+                    top: 2px
+                    left: 2px
+                    width: 20px
+                    height 20px
+                    z-index: 0
+                    background-color: linearGradient1
+                    border-radius: 4px
+
     &__forecast
         width: 100%
         height: 97%
