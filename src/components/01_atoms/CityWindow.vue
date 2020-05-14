@@ -33,7 +33,7 @@ export default {
             'changeCountrySelected',
             'changeShowSlider',
         ]),
-        async openCityForecast() {
+        openCityForecast() {
             // sends city selected to store state
             this.changeCitySelected(this.cityName);
             this.changeCountrySelected(this.countryName);

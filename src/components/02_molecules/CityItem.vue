@@ -8,6 +8,7 @@
 <script>
 import CityDot from '../01_atoms/CityDot';
 import CityWindow from '../01_atoms/CityWindow';
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
     name: 'City',
@@ -30,9 +31,36 @@ export default {
             required: true,
         },
     },
+    computed: {
+        ...mapGetters([
+            'getOpenedCityWindow',
+        ]),
+    },
+    watch: {
+        getOpenedCityWindow(newValue, oldValue) {
+            alert(`${oldValue} to ${newValue}`)
+            alert('inside watcher')
+            if (this.isEnabled && this.getOpenedCityWindow.city !== this.cityName) {
+                this.isEnabled = false;
+                alert('should close ' + this.cityName)
+            }
+        }
+    },
     methods: {
+        ...mapMutations([
+            'changeOpenedCityWindow',
+        ]),
         toggleCityWindow() {
-            this.isEnabled = !this.isEnabled
+            if (!this.getOpenedCityWindow.opened) {
+                this.isEnabled = true;
+                this.changeOpenedCityWindow({ city: this.cityName, opened: true })
+            } else if (this.getOpenedCityWindow.city === this.cityName) {
+                this.isEnabled = false;
+                this.changeOpenedCityWindow({ city: '', opened: false });
+            } else {
+                this.isEnabled = true;
+                this.changeOpenedCityWindow({ city: this.cityName, opened: true });
+            }
         },
     },
 };

@@ -19,7 +19,7 @@
         <div class="card-slider__forecast-city">{{ this.getCitySelected }}, {{ this.getCountrySelected }}</div>
         <div class="card-slider__forecast-items">
             <div class="card-slider__forecast-icon">
-                <img :src="'/' + this.getWeatherIcon" alt="Weather Icon">
+                <img :src="'./' + this.getWeatherIcon" alt="Weather Icon">
             </div>
             <div class="card-slider__forecast-temperature">{{ this.getTemperatureCalculation(this.getTemperature) }}{{ this.temperatureMetric }}</div>
             <div class="card-slider__forecast-feelslike"><span>feels</span> like {{ this.getTemperatureCalculation(this.getFeelsLike) }}{{ this.temperatureMetric }}</div>

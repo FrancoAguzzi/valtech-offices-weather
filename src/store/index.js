@@ -9,6 +9,7 @@ export default new Vuex.Store({
     citySelected: 'London',
     countrySelected: 'UK',
     showSlider: false,
+    openedCityWindow: { city: 'London', opened: false },
     apiKey: 'e592aa1d3e3740179f844e0e4d045519',
     apiData: '',
   },
@@ -52,6 +53,9 @@ export default new Vuex.Store({
     getWeatherDescSecond(state) {
       return state.apiData[0].weather[0].description.split(' ')[1]
     },
+    getOpenedCityWindow: (state) => {
+      return state.openedCityWindow;
+    },
   },
   mutations: {
     changeCitySelected: (state, payload) => {
@@ -65,6 +69,10 @@ export default new Vuex.Store({
     },
     changeShowSlider: (state, payload) => {
       state.showSlider = payload;
+    },
+    changeOpenedCityWindow: (state, payload) => {
+      state.openedCityWindow['city'] = payload.city;
+      state.openedCityWindow['opened'] = payload.opened;
     },
   },
   actions: {
