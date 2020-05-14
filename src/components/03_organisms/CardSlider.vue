@@ -7,11 +7,13 @@
                 <line x1="0" y1="100" x2="100" y2="0"></line>
             </svg>
         </button>
-        <input type="checkbox" name="changeMetric" class="card-slider__header-metric">
-        <label for="changeMetric" class="card-slider__header-metric-label" @click="changeTemperatureMetric">
-            <span class="card-slider__header-metric-kelvin">K</span>
-            <span class="card-slider__header-metric-celsius">°C</span>
-        </label>
+        <div class="card-slider__header-checkbox">
+            <input type="checkbox" id="changeMetric" class="card-slider__header-checkbox-input">
+            <label for="changeMetric" class="card-slider__header-checkbox-label" @click="changeTemperatureMetric">
+                <span class="card-slider__header-checkbox-label-option">K</span>
+                <span class="card-slider__header-checkbox-label-option">°C</span>
+            </label>
+        </div>
       </div>
       <div class="card-slider__forecast">
         <div class="card-slider__forecast-city">{{ this.getCitySelected }}, {{ this.getCountrySelected }}</div>
