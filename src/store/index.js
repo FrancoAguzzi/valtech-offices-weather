@@ -6,12 +6,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    citySelected: 'London',
-    countrySelected: 'UK',
-    showSlider: false,
-    openedCityWindow: { city: 'London', opened: false },
     apiKey: 'e592aa1d3e3740179f844e0e4d045519',
     apiData: '',
+    citySelected: '',
+    countrySelected: '',
+    showSlider: false,
+    openedCityWindow: { city: '', opened: false },
   },
   getters: {
     getCitySelected: (state) => {
@@ -23,66 +23,48 @@ export default new Vuex.Store({
     getShowSlider(state) {
       return state.showSlider;
     },
-    getTemperature(state) {
-      return state.apiData[0].main.temp;
-    },
-    getFeelsLike(state) {
-        return state.apiData[0].main.feels_like;
-    },
-    getMinTemp(state) {
-        return state.apiData[0].main.temp_min;
-    },
-    getMaxTemp(state) {
-        return state.apiData[0].main.temp_max;
-    },
-    getHumidity(state) {
-        return state.apiData[0].main.humidity;
-    },
-    getWindSpeed(state) {
-        return Math.round((state.apiData[0].wind.speed * 3.6) * 100) / 100;
-    },
     getWeather(state) {
-        return state.apiData[0].weather[0].main;
+      const { weather = '' } = state.apiData;
+      return weather;
     },
-    getWeatherIcon(state) {
-        return state.apiData[0].weather[0].icon;
+    getMainWeather(state) {
+      const { main = '' } = state.apiData;
+      return main;
     },
-    getWeatherDescFirst(state) {
-        return state.apiData[0].weather[0].description.split(' ')[0]
+    getWind(state) {
+      const { wind = '' } = state.apiData;
+      return wind;
     },
-    getWeatherDescSecond(state) {
-      return state.apiData[0].weather[0].description.split(' ')[1]
-    },
-    getOpenedCityWindow: (state) => {
+    getOpenedCityWindow(state)  {
       return state.openedCityWindow;
     },
   },
   mutations: {
     changeCitySelected: (state, payload) => {
-      state.citySelected = payload;
-    },
-    changeCountrySelected: (state, payload) => {
-      state.countrySelected = payload;
+      state.citySelected = payload.city;
+      state.countrySelected = payload.country;
     },
     changeApiData: (state, payload) => {
       state.apiData = payload;
+      state.apiData.weather = payload.weather[0];
     },
     changeShowSlider: (state, payload) => {
       state.showSlider = payload;
     },
     changeOpenedCityWindow: (state, payload) => {
-      state.openedCityWindow['city'] = payload.city;
-      state.openedCityWindow['opened'] = payload.opened;
+      state.openedCityWindow.city = payload.city;
+      state.openedCityWindow.opened = payload.opened;
     },
   },
   actions: {
-    requestApiData({ state, commit }) {
-      axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${state.citySelected}&appid=${state.apiKey}`)
+    requestApiData({ state, commit }, payload) {
+      commit('changeCitySelected', payload);
+      axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${payload.city}&appid=${state.apiKey}`)
            .then(response => {
-             commit('changeApiData', response.data.list);
+             commit('changeApiData', response.data.list[0]);
            })
            .catch(error => {
-             alert(`Error: ${error}`)
+             alert(`Error: ${error}`);
            })
     }
   },

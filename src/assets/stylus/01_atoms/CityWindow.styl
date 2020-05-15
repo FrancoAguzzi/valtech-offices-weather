@@ -1,16 +1,14 @@
 .city__window
-    position: absolute
-    left: -119px
-    width: 250px
-    height: 150px
     box-sizing: border-box
+    width: remify(250px)
+    height: remify(150px)
+    position: absolute
+    left: remify(-119px) // width / 2 - city dot size / 2
     font-family: primaryFont
-
     background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
-    border-radius: 4px
-    border: 1px solid tertiaryColor
-    box-shadow: 0px 3px 6px secondaryColor;
-
+    border-radius: remify(4px)
+    border: remify(1px) solid tertiaryColor
+    box-shadow: remify(0px) remify(3px) remify(6px) secondaryColor;
     display: flex
     flex-direction: column
     justify-content: center
@@ -18,30 +16,31 @@
     z-index: 1
 
     &::before
+        box-sizing: border-box
+        width: remify(20px)
+        height: remify(20px)
         content: ''
         position: absolute
-        box-sizing: border-box
-        top: -11px
-        z-index: 1
-        width: 20px
-        height: 20px
-        border-top: 1px solid tertiaryColor
-        border-left: 1px solid tertiaryColor
+        top: remify(-11px)
+        border-top: remify(1px) solid tertiaryColor
+        border-left: remify(1px) solid tertiaryColor
         background-color: linearGradient1
+        z-index: 1
         transform: rotateZ(45deg)
 
     &-name
-        margin-bottom: 15px
-        font-size: 24px
+        margin-bottom: remify(15px)
+        font-size: remify(24px)
+
+        &::selection
+            background-color: transparent
 
     &-cta
-        padding: 10px 20px
+        padding: remify(10px) remify(20px)
         font-family: primaryFont
-
         background-color: primaryColor
-        border-radius: 4px
-        border: 1px solid secondaryColor
-
+        border-radius: remify(4px)
+        border: remify(1px) solid secondaryColor
         cursor: pointer
         outline: none
         transition: all .4s
@@ -49,3 +48,6 @@
         &:hover
             background-color: linearGradient3
             transition: all .4s
+            
+        &::selection
+            background-color: transparent

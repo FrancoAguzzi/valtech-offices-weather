@@ -1,13 +1,13 @@
 .card-slider
-    width: 650px
+    width: remify(40%)
     height: 100vh
     position: fixed
-    z-index: 2
     top: 0
-    right: -650px
+    right: remify(-40%)
+    z-index: 2
     background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
+    border-left: remify(1px) solid secondaryColor
     transition: all .4s
-    border-left: 1px solid secondaryColor
 
     &.opened
         right: 0
@@ -15,29 +15,29 @@
 
     &__header
         height: 3%
-        margin: 15px 15px 0 15px
+        margin: 2.5% 2.5% 0 2.5% 
         display: flex
         justify-content: space-between
 
         &-close
             height: 100%
-            border: none
             padding: 0
             background: transparent
-            transition: all .4s
             outline: none
+            border: none
+            transition: all .4s
 
             &:hover
+                cursor: pointer
                 transform: scale3d(1.3, 1.3, 1.3)
                 transition: transform .4s
-                cursor: pointer
 
         &-checkbox
-            display: flex
             position: relative
+            display: flex
 
             &-input:checked + label:before
-                left: 28px
+                left: remify(28px)
                 transition: all .3s
 
             &-input
@@ -47,31 +47,31 @@
 
             &-label
                 position: relative
-                width: 55px
-                height: 29px
-                border-radius: 10px
+                width: remify(55px)
+                height: remify(29px)
+                border-radius: remify(10px)
                 background-color: primaryColor
+                cursor: pointer
                 display: flex
                 justify-content: space-around
                 align-items: center
-                cursor: pointer
 
                 &-option
+                    z-index: 2
+                    color: tertiaryColor
                     font-family: primaryFont
                     font-weight: bold
-                    color: tertiaryColor
-                    z-index: 2
 
                 &:before
                     content: ''
                     position: absolute
-                    top: 2px
-                    left: 2px
-                    width: 25px
-                    height 25px
-                    border-radius: 8px
-                    background-color: linearGradient1
+                    top: remify(2px)
+                    left: remify(2px)
+                    width: remify(25px)
+                    height remify(25px)
                     z-index: 1
+                    border-radius: remify(8px)
+                    background-color: linearGradient1
                     transition: all .3s
 
     &__forecast
@@ -82,6 +82,7 @@
         align-items: center
 
         &-items
+            min-width: 30%
             height: 40%
             display: flex
             flex-direction: column
@@ -89,113 +90,113 @@
 
         &-city
             box-sizing: border-box
-            font-family: primaryFont
-            font-size: 70px
             height: 25%
             padding-top: 5%
+            font-family: primaryFont
+            font-size: 4.5rem
 
         &-icon
-            width: 70px
-            height: 70px
-            align-self: flex-start
+            width: 7rem
+            height: 7rem
+            margin-bottom: -0.75rem
+
+            &-img
+                width: 100%
+                height: 100%
 
         &-temperature
-            font-family: primaryFont
-            font-size: 70px
             color: primaryColor 
+            font-family: primaryFont
+            font-size: 4.5rem
             font-weight: bold 
             align-self: flex-end
 
         &-feelslike
+            margin-top: .75rem
             color: primaryColor
             font-family: primaryFont
+            font-size: 1.5rem
             font-weight: bold
-            font-size: 24px
             align-self: flex-end
-            margin-top: 10px
 
             & span
                 color: tertiaryColor
         
         &-temps
-            display: flex
-            font-family: primaryFont
-            font-size: 24px
-            color: tertiaryColor
-            font-weight: bold
             height: 5%
+            display: flex
+            color: tertiaryColor
+            font-family: primaryFont
+            font-size: 1.5rem
+            font-weight: bold
 
-            &max
-                margin-left: 5px
-            
-            &min
-                margin-right: 5px
+            &-separator
+                margin: 0 .5rem 0 .5rem
 
         &-info
             width: 100%
             height: 30%
             background-color: primaryColor
-            border-top: 1px solid secondaryColor
-            box-shadow: 0 -10px 100px primaryColor
-
+            border-top: remify(1px) solid secondaryColor
+            box-shadow: 0 -0.75rem 6rem primaryColor
             display: flex
             justify-content: center
 
-            & div:not(:first-child)
-                margin-left: 50px
-
         &-humidity
+            color: linearGradient1
+            font-family: primaryFont
+            font-size: 2.5rem
             display: flex
             flex-direction: column
             justify-content: center
             align-items: center
-            font-family: primaryFont
-            font-size: 42px
-            color: linearGradient1
 
             & span
                 width: 100%
-                font-size: 20px
-                margin-top: 10px
+                margin-top: 13%
                 color: tertiaryColor
+                font-size: 1.25rem
 
         &-windspeed
+            margin-left: 7%
             display: flex
             flex-direction: column
             justify-content: center
             align-items: center
 
-            & div
+            & span
+                width: 100%
+                margin-top: 7%
+                color: tertiaryColor
                 font-family: primaryFont
-                font-size: 42px
+                font-size: 1.25rem
+                text-align: center
+
+            &-value
                 color: linearGradient1
+                font-family: primaryFont
+                font-size: 2.5rem
 
                 & span 
                     color: linearGradient1
-                    margin-left: -5px
-
-            & span
-                font-family: primaryFont
-                text-align: center
-                width: 100%
-                font-size: 20px
-                margin-top: 10px
-                color: tertiaryColor
+                    margin-left: -5%
             
-        &-weather 
+        &-weather
+            margin: 1.5% 0 0 5%
             display: flex
             flex-direction: column
             justify-content: center
             align-items: center
             font-family: primaryFont
-            font-size: 34px
-            color: linearGradient1
-            margin-top: 10px
+
+            &-description1
+                font-size: 2rem
+                color: linearGradient1
             
-            & div
+            &-description2
                 text-align: center
-                margin-top: 10px
+                margin-top: 5%
                 width: 100%
-                font-size: 24px
+                font-size: 1.5rem
                 color: tertiaryColor
             

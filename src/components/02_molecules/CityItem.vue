@@ -1,7 +1,7 @@
 <template>
   <div class="city">
       <city-dot :cityName="cityName" @shouldToggle="toggleCityWindow"></city-dot>
-      <city-window v-if="this.isEnabled" :cityName="cityName" :countryName="countryName"></city-window>
+      <city-window v-if="isEnabled" :cityName="cityName" :countryName="countryName"></city-window>
   </div>
 </template>
 
@@ -15,11 +15,6 @@ export default {
     components: {
         CityDot,
         CityWindow,
-    },
-    data() {
-        return {
-            isEnabled: false,
-        };
     },
     props: {
         cityName: {
@@ -35,15 +30,10 @@ export default {
         ...mapGetters([
             'getOpenedCityWindow',
         ]),
-    },
-    watch: {
-        getOpenedCityWindow(newValue, oldValue) {
-            alert(`${oldValue} to ${newValue}`)
-            alert('inside watcher')
-            if (this.isEnabled && this.getOpenedCityWindow.city !== this.cityName) {
-                this.isEnabled = false;
-                alert('should close ' + this.cityName)
-            }
+        isEnabled() {
+            // If this component is the city selected, it shows the city window
+            const { city } = this.getOpenedCityWindow;
+            return city === this.cityName;
         }
     },
     methods: {
@@ -51,14 +41,11 @@ export default {
             'changeOpenedCityWindow',
         ]),
         toggleCityWindow() {
-            if (!this.getOpenedCityWindow.opened) {
-                this.isEnabled = true;
-                this.changeOpenedCityWindow({ city: this.cityName, opened: true })
-            } else if (this.getOpenedCityWindow.city === this.cityName) {
-                this.isEnabled = false;
-                this.changeOpenedCityWindow({ city: '', opened: false });
+            if (this.isEnabled) {
+                // If city window is opened, on click it should close
+                this.changeOpenedCityWindow({ city: '', opened: false })
             } else {
-                this.isEnabled = true;
+                // If city window is closed, on click it should open
                 this.changeOpenedCityWindow({ city: this.cityName, opened: true });
             }
         },

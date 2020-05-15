@@ -2,7 +2,6 @@
   <div class="world-map" style="--aspect-ratio: 16/9">
       <city cityName="Florianópolis" countryName="BR" style="--spot-y: 68%; --spot-x: 30%;"></city>
       <city cityName="São Paulo" countryName="BR" style="--spot-y: 65.5%; --spot-x: 31%;"></city>
-      <city cityName="Buenos Aires" countryName="AR" style="--spot-y: 69.5%; --spot-x: 28%;"></city>
       <city cityName="Buenos Aires" countryName="AR" style="--spot-y: 70%; --spot-x: 28.5%;"></city>
       <city cityName="Montreal" countryName="CA" style="--spot-y: 33.5%; --spot-x: 27.5%;"></city>
       <city cityName="Toronto" countryName="CA" style="--spot-y: 34.5%; --spot-x: 26.5%;"></city>
@@ -11,10 +10,9 @@
       <city cityName="Aarhus" countryName="DK" style="--spot-y: 28.5%; --spot-x: 51%;"></city>
       <city cityName="Copenhagen" countryName="DK" style="--spot-y: 29%; --spot-x: 52%;"></city>
       <city cityName="Paris" countryName="FR" style="--spot-y: 33.5%; --spot-x: 48%;"></city>
-      <city cityName="Koln" countryName="DE" style="--spot-y: 31.55%; --spot-x: 49.80%;"></city>
-      <city cityName="Dusseldorf" countryName="DE" style="--spot-y: 30.5%; --spot-x: 49.5%;"></city>
-      <city cityName="Munchen" countryName="DE" style="--spot-y: 34%; --spot-x: 51.25%;"></city>
-      <city cityName="Munchen" countryName="DE" style="--spot-y: 34.5%; --spot-x: 51.75%;"></city>
+      <city cityName="Köln" countryName="DE" style="--spot-y: 31.55%; --spot-x: 49.80%;"></city>
+      <city cityName="Düsseldorf" countryName="DE" style="--spot-y: 30.5%; --spot-x: 49.5%;"></city>
+      <city cityName="München" countryName="DE" style="--spot-y: 34.5%; --spot-x: 51.5%;"></city>
       <city cityName="Neu-Isenburg" countryName="DE" style="--spot-y: 32.75%; --spot-x: 50.5%;"></city>
       <city cityName="Braunschweig" countryName="DE" style="--spot-y: 30.5%; --spot-x: 51%;"></city>
       <city cityName="Dresden" countryName="DE" style="--spot-y: 31.5%; --spot-x: 52%;"></city>
@@ -22,7 +20,6 @@
       <city cityName="Bengaluru" countryName="IN" style="--spot-y: 49%; --spot-x: 66.5%;"></city>
       <city cityName="Gurugram" countryName="IN" style="--spot-y: 44%; --spot-x: 66%;"></city>
       <city cityName="Amsterdam" countryName="NL" style="--spot-y: 28.75%; --spot-x: 48%;"></city>
-      <city cityName="Amsterdam" countryName="NL" style="--spot-y: 28.75%; --spot-x: 48.75%;"></city>
       <city cityName="Eindhoven" countryName="NL" style="--spot-y: 30.25%; --spot-x: 48.75%;"></city>
       <city cityName="Utrecht" countryName="NL" style="--spot-y: 30%; --spot-x: 48%;"></city>
       <city cityName="Singapore" countryName="SG" style="--spot-y: 54%; --spot-x: 72.25%;"></city>

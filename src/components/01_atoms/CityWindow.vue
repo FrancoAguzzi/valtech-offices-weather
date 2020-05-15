@@ -34,15 +34,11 @@ export default {
             'changeShowSlider',
         ]),
         openCityForecast() {
-            // sends city selected to store state
-            this.changeCitySelected(this.cityName);
-            this.changeCountrySelected(this.countryName);
+            // Requests new api data based on the city selected
+            this.requestApiData({ city: this.cityName, country: this.countryName });
 
-            // requests new api data based on new city selected
-            this.requestApiData();
-
-            // opens forecast slider
-            this.changeShowSlider(true);
+            // Open forecast slider
+            setTimeout(() => this.changeShowSlider(true), 700);
         }
     }
 };

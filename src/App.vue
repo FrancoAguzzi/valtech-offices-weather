@@ -1,7 +1,10 @@
 <template>
-  <div id="app">
-    <world-map></world-map>
-    <card-slider></card-slider>
+  <div id="app" class="app">
+    <div class="app__title">Should I work from home today?</div>
+    <div class="app__content">
+      <world-map></world-map>
+      <card-slider></card-slider>
+    </div>
   </div>
 </template>
 
@@ -15,9 +18,6 @@ export default {
     WorldMap,
     CardSlider
   },
-  mounted() {
-    this.$store.dispatch('requestApiData');
-  }
 }
 </script>
 

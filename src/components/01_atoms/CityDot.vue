@@ -20,8 +20,10 @@ export default {
     },
     methods: {
       dotClicked() {
-        // close forecast slider and emit event to open city window
+        // Close forecast slider if it's opened
         if (this.getShowSlider) this.$store.commit('changeShowSlider', false);
+
+        // Emit event to open city window
         this.$emit('shouldToggle');
       },
     },
