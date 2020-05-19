@@ -22,5 +22,7 @@ export default {
 </script>
 
 <style src="./assets/stylus/main.styl" lang="stylus">
-
+@media (max-width: 1000px) {
+  fontSize = 10px
+}
 </style>
