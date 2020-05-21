@@ -1,24 +1,11 @@
-# valtech-offices-weather
+# Valtech Offices Forecast
 
-## Project setup
-```
-npm install
-```
+The website provides forecasts to all Valtech offices around the world. Created using Vuejs, Vuex, Stylus (CSS Preprocessor) and an OpenWeather API. 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<br>
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This website was deployed using Netlify and it's available at https://valtech-offices-forecast.netlify.app/
 
-### Lints and fixes files
-```
-npm run lint
-```
+<br>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![](valtech-offices-forecast.gif)
