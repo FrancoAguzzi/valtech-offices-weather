@@ -4,11 +4,11 @@
     height: remify(150px)
     position: absolute
     left: remify(-119px) // width / 2 - city dot size / 2
-    font-family: primaryFont
-    background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
+    font-family: var(--primaryFont)
+    background: linear-gradient(var(--linearGradient3) 15%, var(--linearGradient2), var(--linearGradient1)) 
     border-radius: remify(4px)
-    border: remify(1px) solid tertiaryColor
-    box-shadow: remify(0px) remify(3px) remify(6px) secondaryColor;
+    border: remify(1px) solid var(--tertiaryColor)
+    box-shadow: remify(0px) remify(3px) remify(6px) var(--secondaryColor);
     display: flex
     flex-direction: column
     justify-content: center
@@ -22,32 +22,41 @@
         content: ''
         position: absolute
         top: remify(-11px)
-        border-top: remify(1px) solid tertiaryColor
-        border-left: remify(1px) solid tertiaryColor
-        background-color: linearGradient1
+        border-top: remify(1px) solid var(--tertiaryColor)
+        border-left: remify(1px) solid var(--tertiaryColor)
+        background-color: var(--linearGradient3)
         z-index: 1
         transform: rotateZ(45deg)
 
     &-name
         margin-bottom: remify(15px)
         font-size: remify(24px)
+        color: var(--tertiaryColor)
 
         &::selection
             background-color: transparent
 
     &-cta
+        color: var(--tertiaryColor)
         padding: remify(10px) remify(20px)
-        font-family: primaryFont
-        background-color: primaryColor
+        font-family: var(--primaryFont)
+        background-color: var(--primaryColor)
         border-radius: remify(4px)
-        border: remify(1px) solid secondaryColor
+        border: remify(1px) solid var(--secondaryColor)
         cursor: pointer
         outline: none
         transition: all .4s
 
         &:hover
-            background-color: linearGradient3
+            background-color: var(--secondaryColor)
             transition: all .4s
             
         &::selection
             background-color: transparent
+
+    &-closer
+        align-self: flex-end
+        margin-right: remify(15px)
+
+        svg
+            width: remify(15px)

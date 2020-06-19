@@ -1,7 +1,7 @@
 <template>
   <div class="city">
       <city-dot :cityName="cityName" @shouldToggle="toggleCityWindow"></city-dot>
-      <city-window v-if="isEnabled" :cityName="cityName" :countryName="countryName"></city-window>
+      <city-window v-if="isEnabled" @shouldClose="closeCityWindow" :cityName="cityName" :countryName="countryName"></city-window>
   </div>
 </template>
 
@@ -40,6 +40,9 @@ export default {
         ...mapMutations([
             'changeOpenedCityWindow',
         ]),
+        closeCityWindow() {
+            this.changeOpenedCityWindow({ city: '', opened: false })
+        },
         toggleCityWindow() {
             if (this.isEnabled) {
                 // If city window is opened, on click it should close

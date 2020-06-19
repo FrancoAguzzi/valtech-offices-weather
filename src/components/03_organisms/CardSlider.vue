@@ -2,12 +2,7 @@
   <div class="card-slider" :class="{ opened: this.getShowSlider }">
       <div class="card-slider__header">
         <!-- Close Button -->
-        <button class="card-slider__header-close" @click="closeCardSlider">
-            <svg viewBox="0 0 100 100" class="close-svg">
-                <line x1="0" y1="0" x2="100" y2="100"></line>
-                <line x1="0" y1="100" x2="100" y2="0"></line>
-            </svg>
-        </button>
+        <close-window @click.native="closeCardSlider"></close-window>
         <!-- Change Temperature Metric Toggler -->
         <div class="card-slider__header-checkbox">
             <input type="checkbox" id="changeMetric" class="card-slider__header-checkbox-input">
@@ -61,9 +56,13 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
+import CloseWindow from '../01_atoms/CloseWindow';
 
 export default {
     name: 'CardSlider',
+    components: {
+        CloseWindow,
+    },
     data() {
         return {
             temperatureMetric: '°F'

@@ -3,11 +3,12 @@
     height: 100vh
     position: fixed
     top: 0
-    right: remify(-40%)
+    right: remify(-43%)
     z-index: 2
-    background: linear-gradient(linearGradient1, linearGradient2, linearGradient3, primaryColor) 
-    border-left: remify(1px) solid secondaryColor
+    background: linear-gradient(var(--linearGradient3), var(--linearGradient2), var(--linearGradient1) 30%) 
+    border-left: remify(1px) solid var(--secondaryColor)
     transition: all .4s
+    box-shadow: 2rem 0 4rem var(--tertiaryColor) 
 
     &.opened
         right: 0
@@ -18,19 +19,6 @@
         margin: 2.5% 2.5% 0 2.5% 
         display: flex
         justify-content: space-between
-
-        &-close
-            height: 100%
-            padding: 0
-            background: transparent
-            outline: none
-            border: none
-            transition: all .4s
-
-            &:hover
-                cursor: pointer
-                transform: scale3d(1.3, 1.3, 1.3)
-                transition: transform .4s
 
         &-checkbox
             position: relative
@@ -50,7 +38,7 @@
                 width: remify(55px)
                 height: remify(29px)
                 border-radius: remify(10px)
-                background-color: primaryColor
+                background-color: var(--primaryColor)
                 cursor: pointer
                 display: flex
                 justify-content: space-around
@@ -58,8 +46,8 @@
 
                 &-option
                     z-index: 2
-                    color: tertiaryColor
-                    font-family: primaryFont
+                    color: var(--tertiaryColor)
+                    font-family: var(--primaryFont)
                     font-weight: bold
 
                 &:before
@@ -71,7 +59,7 @@
                     height remify(25px)
                     z-index: 1
                     border-radius: remify(8px)
-                    background-color: linearGradient1
+                    background-color: var(--linearGradient1)
                     transition: all .3s
 
     &__forecast
@@ -92,7 +80,7 @@
             box-sizing: border-box
             height: 25%
             padding-top: 5%
-            font-family: primaryFont
+            font-family: var(--primaryFont)
             font-size: remify(72px)
 
         &-icon
@@ -105,28 +93,28 @@
                 height: 100%
 
         &-temperature
-            color: primaryColor 
-            font-family: primaryFont
+            color: var(--primaryColor) 
+            font-family: var(--primaryFont)
             font-size: remify(70px)
             font-weight: bold 
             align-self: flex-end
 
         &-feelslike
             margin-top: remify(12px)
-            color: primaryColor
-            font-family: primaryFont
+            color: var(--primaryColor)
+            font-family: var(--primaryFont)
             font-size: remify(24px)
             font-weight: bold
             align-self: flex-end
 
             & span
-                color: tertiaryColor
+                color: var(--tertiaryColor)
         
         &-temps
             height: 5%
             display: flex
-            color: tertiaryColor
-            font-family: primaryFont
+            color: var(--tertiaryColor)
+            font-family: var(--primaryFont)
             font-size: remify(24px)
             font-weight: bold
 
@@ -136,15 +124,15 @@
         &-info
             width: 100%
             height: 30%
-            background-color: primaryColor
-            border-top: remify(1px) solid secondaryColor
-            box-shadow: 0 -0.75rem 6rem primaryColor
+            background-color: var(--primaryColor)
+            border-top: remify(1px) solid var(--secondaryColor)
+            box-shadow: 1rem 0 4rem var(--secondaryColor)
             display: flex
             justify-content: center
 
         &-humidity
-            color: linearGradient1
-            font-family: primaryFont
+            color: var(--linearGradient1)
+            font-family: var(--primaryFont)
             font-size: remify(40px)
             display: flex
             flex-direction: column
@@ -154,7 +142,7 @@
             & span
                 width: 100%
                 margin-top: 13%
-                color: tertiaryColor
+                color: var(--tertiaryColor)
                 font-size: remify(20px)
 
         &-windspeed
@@ -167,18 +155,18 @@
             & span
                 width: 100%
                 margin-top: 7%
-                color: tertiaryColor
-                font-family: primaryFont
+                color: var(--tertiaryColor)
+                font-family: var(--primaryFont)
                 font-size: remify(20px)
                 text-align: center
 
             &-value
-                color: linearGradient1
-                font-family: primaryFont
+                color: var(--linearGradient1)
+                font-family: var(--primaryFont)
                 font-size: remify(40px)
 
                 & span 
-                    color: linearGradient1
+                    color: var(--linearGradient1)
                     margin-left: -5%
             
         &-weather
@@ -187,16 +175,16 @@
             flex-direction: column
             justify-content: center
             align-items: center
-            font-family: primaryFont
+            font-family: var(--primaryFont)
 
             &-description1
                 font-size: remify(32px)
-                color: linearGradient1
+                color: var(--linearGradient1)
             
             &-description2
                 text-align: center
                 margin-top: 5%
                 width: 100%
                 font-size: remify(24px)
-                color: tertiaryColor
+                color: var(--tertiaryColor)
             
