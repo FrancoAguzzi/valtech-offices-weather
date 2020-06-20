@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container__home container">
     <div class="container__title">Should I work from home today?</div>
     <div class="container__content">
       <world-map></world-map>

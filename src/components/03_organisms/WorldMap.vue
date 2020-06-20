@@ -49,8 +49,16 @@ import City from "../02_molecules/CityItem";
 
 export default {
     name: 'WorldMap',
+    mounted() {
+        const checkbox = document.querySelector('.navigation__dark-input');
+        const map = document.querySelector('.world-map');
+
+        if (checkbox.checked) {
+            map.style.setProperty('background-image', "url('../images/map-dark.svg')")
+        }
+    },
     components: {
         City
-    },
+    }
 };
 </script>

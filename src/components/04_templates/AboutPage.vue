@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container__about container">
     <div class="container__card card">
       <about-draw></about-draw>
       <div class="card__content">
@@ -14,8 +14,10 @@
           <img src="/images/vue.png" alt="Vue Logo" class="social-media">
           <img src="/images/vuex.png" alt="VueX Logo" class="social-media">
           <img src="/images/vuerouter.png" alt="VueRouter Logo" class="social-media">
-          <img src="/images/stylus.svg" alt="Stylus Logo" class="social-media stylus-logo">
-          <img src="/images/openweather.png" alt="Open Weather Logo" class="social-media api-logo">
+          <img v-if="darkModeOn" src="/images/stylus-dark.svg" alt="Stylus Logo" class="social-media stylus-logo">
+          <img v-else src="/images/stylus.svg" alt="Stylus Logo" class="social-media stylus-logo">
+          <img v-if="darkModeOn" src="/images/openweather-dark.png" alt="Open Weather Logo" class="social-media api-logo">
+          <img v-else src="/images/openweather.png" alt="Open Weather Logo" class="social-media api-logo">
         </div>
       </div>
     </div>
@@ -29,6 +31,12 @@ export default {
   name: 'AboutPage',
   components: {
     AboutDraw,
+  },
+  computed: {
+    darkModeOn() {
+      const checkbox = document.querySelector('.navigation__dark-input');
+      return checkbox.checked
+    }
   }
 }
 </script>
