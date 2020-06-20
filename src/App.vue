@@ -20,10 +20,31 @@ export default {
   methods: {
     toggleDarkMode(e) {
       const root = document.querySelector(':root');
-      const map = document.getElementsByClassName('world-map')[0];
+
+      if (document.getElementsByClassName('world-map')[0]) {
+        // Home Page
+        const map = document.getElementsByClassName('world-map')[0];
+
+        if (e.target.checked) {
+          map.style.setProperty('background-image', 'url(../images/map-dark.svg)')
+        } else {
+          map.style.setProperty('background-image', 'url(../images/map.svg)')
+        }
+      } else {
+        // About Page
+        const stylusLogo = document.querySelector('.stylus-logo');
+        const apiLogo = document.querySelector('.api-logo');
+        
+        if (e.target.checked) {
+          stylusLogo.setAttribute('src', '/images/stylus-dark.svg');
+          apiLogo.setAttribute('src', '/images/openweather-dark.png');
+        } else {
+          stylusLogo.setAttribute('src', '/images/stylus.svg')
+          apiLogo.setAttribute('src', '/images/openweather.png');
+        }
+      }
 
       if (e.target.checked) {
-        map.style.setProperty('background-image', 'url(../images/map-dark.svg)')
         root.style.setProperty('--primaryColor', '#222');
         root.style.setProperty('--secondaryColor', '#111');
         root.style.setProperty('--tertiaryColor', '#eee');
@@ -32,7 +53,6 @@ export default {
         root.style.setProperty('--linearGradient2', '#486581');
         root.style.setProperty('--linearGradient3', '#243b53');
       } else {
-        map.style.setProperty('background-image', 'url(../images/map.svg)')
         root.style.setProperty('--primaryColor', '#fff');
         root.style.setProperty('--secondaryColor', '#d3d3d3');
         root.style.setProperty('--tertiaryColor', '#000');
