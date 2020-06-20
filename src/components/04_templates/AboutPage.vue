@@ -7,7 +7,7 @@
           Valtech Offices Forecast
         </h1>
         <p class="card__content-text">
-          Welcome! This website was fully developed with VueJS, using VueRouter and VueX also. The idea came up from an informal conversation with a Valtech colleague and was accomplished using an Open Weather API. Feel free too contribute thriught the 
+          Welcome! This website was fully developed with VueJS, using VueRouter and VueX also. The idea came up from an informal conversation with a Valtech colleague and was accomplished using an Open Weather API. Feel free too contribute throught the 
           <a href="https://github.com/FrancoAguzzi/valtech-offices-weather" target="_blank" class="card__content-link">repo</a>.
         </p>
         <div class="card__content-social">
